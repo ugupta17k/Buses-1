@@ -1,0 +1,136 @@
+.card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s;
+    position: relative;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.imageArea {
+    position: relative;
+    height: 200px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contactBadge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    text-align: center;
+}
+
+.details {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #6B7280;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.specsRow {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #00AEEF;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.specItem {
+    background: #F0F9FF;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.priceRow {
+    margin-top: auto;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.emi {
+    font-size: 0.8rem;
+    color: #6B7280;
+}
+
+.dealerTag {
+    float: right;
+    background: #FEF3C7;
+    color: #D97706;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.contactBtn {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.contactBtn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.favBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
