@@ -16,13 +16,6 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     height: fit-content;
-    position: sticky;
-    top: 6rem;
-    /* Header height + spacing */
-    align-self: flex-start;
-    max-height: calc(100vh - 7rem);
-    overflow-y: auto;
-    scrollbar-width: thin;
 }
 
 .filterHeader {
