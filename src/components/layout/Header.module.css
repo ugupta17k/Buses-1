@@ -89,4 +89,19 @@
     .nav {
         display: block;
     }
+
+    .menuIcon {
+        display: none;
+    }
+}
+
+.menuIcon {
+    display: block;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .menuIcon {
+        display: none;
+    }
 }

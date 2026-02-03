@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bus, Menu } from 'lucide-react';
 import styles from './Header.module.css';
+import MobileMenu from './MobileMenu';
 
 const Header = () => {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    const navLinks = [
+        { to: '/', label: 'Inventory' },
+        { to: '/models', label: 'Models' },
+        { to: '/about', label: 'About Us' },
+        { to: '/contact', label: 'Contact' },
+    ];
+
+    const handleRequestDemo = () => {
+        window.dispatchEvent(new CustomEvent('open-demo-modal'));
+    };
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>
@@ -14,30 +28,42 @@ const Header = () => {
 
                 <nav className={styles.nav}>
                     <ul className={styles.navLinks}>
-                        <li><Link to="/inventory" className={styles.navLink}>Inventory</Link></li>
-                        <li><Link to="/models" className={styles.navLink}>Models</Link></li>
-                        <li><Link to="/about" className={styles.navLink}>About Us</Link></li>
-                        <li><Link to="/contact" className={styles.navLink}>Contact</Link></li>
+                        {navLinks.map(link => (
+                            <li key={link.to}>
+                                <Link to={link.to} className={styles.navLink}>{link.label}</Link>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
 
                 <div className={styles.actions}>
                     <button
                         className={styles.ctaButton}
-                        onClick={() => window.dispatchEvent(new CustomEvent('open-demo-modal'))}
+                        onClick={handleRequestDemo}
                     >
                         Request Demo
                     </button>
-                    <button className="md:hidden text-white" aria-label="Menu">
-                        {/* Mobile menu logic to be added */}
-                        <Menu size={24} color="white" className="block md:hidden" />
-                        {/* Note: I'm mixing some utility classes concepts or just stick to css modules. 
-                 The css module has display:none for nav on mobile. 
-                 I should style the menu button in css too. 
-             */}
+                    <button
+                        className={styles.mobileMenuBtn} // We will need to ensure this class exists or allow default
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                        aria-label="Menu"
+                        onClick={() => setMobileMenuOpen(true)}
+                    >
+                        {/* Display logic for mobile only handled by CSS media queries usually, 
+                             but here we rely on the icon itself primarily or parent container.
+                             The previous code had md:hidden classes. Let's keep inline style simple or rely on module.
+                         */}
+                        <Menu size={24} color="white" className={styles.menuIcon} />
                     </button>
                 </div>
             </div>
+
+            <MobileMenu
+                isOpen={mobileMenuOpen}
+                onClose={() => setMobileMenuOpen(false)}
+                links={navLinks}
+                onRequestDemo={handleRequestDemo}
+            />
         </header>
     );
 };
